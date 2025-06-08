@@ -1,0 +1,93 @@
+#############################
+# === VISUAL STUDIO === #
+#############################
+
+## User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## Build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+
+## VS generated files
+.vs/
+*.ncb
+*.cache
+*.dbmdl
+*.pdb
+*.opendb
+*.VC.db
+*.VC.opendb
+
+## Web stuff
+project.lock.json
+project.fragment.lock.json
+artifacts/
+BundleConfig.json
+
+## Azure
+.publish/
+
+#############################
+# === DOTNET / ASP.NET === #
+#############################
+
+## ASP.NET Core stuff
+appsettings.Development.json
+appsettings.Production.json
+secrets.json
+
+## Dotnet CLI
+*.deps.json
+*.runtimeconfig.json
+*.dll
+*.exe
+*.tmp
+*.log
+
+## EF Core
+Migrations/
+
+#############################
+# === SYSTEM FILES === #
+#############################
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# VS Code settings (optional)
+.vscode/
+
+#############################
+# === GIT STUFF === #
+#############################
+
+# Ignore Git conflict backups
+*.orig
+
+# Ignore logs and crash dumps
+*.log
+*.stackdump
+*.dmp
+
+# Ignore node_modules (if using JS libs)
+node_modules/
+
+# Ignore npm/yarn/pnpm lock files (optional)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
