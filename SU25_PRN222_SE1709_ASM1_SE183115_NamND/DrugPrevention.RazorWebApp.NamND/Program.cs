@@ -1,3 +1,4 @@
+using DrugPrevention.RazorWebApp.NamND.Hubs;
 using DrugPrevention.Services.NamND;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
@@ -39,6 +40,6 @@ app.MapRazorPages();
 
 app.MapRazorPages().RequireAuthorization();
 
-//app.MapHub<DrugPreventionHub>("/DrugPreventionHub");
+app.MapHub<DrugPreventionHub>("/DrugPreventionHub");
 
 app.Run();

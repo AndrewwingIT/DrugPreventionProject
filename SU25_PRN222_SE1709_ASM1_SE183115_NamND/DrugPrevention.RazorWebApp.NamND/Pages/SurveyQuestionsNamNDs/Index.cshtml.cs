@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using DrugPrevention.Repositories.NamND.Models;
 using DrugPrevention.Services.NamND;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DrugPrevention.RazorWebApp.NamND.Pages.SurveyQuestionsNamNDs
 {
+    [Authorize(Roles = "1, 2")]
     public class IndexModel : PageModel
     {
         //private readonly DrugPrevention.Repositories.NamND.Models.SU25_PRN222_SE1709_G2_DrugPreventionSystemContext _context;
