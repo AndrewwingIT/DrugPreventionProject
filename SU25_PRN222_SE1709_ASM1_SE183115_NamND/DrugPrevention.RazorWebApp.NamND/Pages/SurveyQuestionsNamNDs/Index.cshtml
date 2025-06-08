@@ -40,7 +40,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.SurveyQuestionsNamND[0].HelpText)
             </th>
-            <th>
+            @* <th>
                 @Html.DisplayNameFor(model => model.SurveyQuestionsNamND[0].Section)
             </th>
             <th>
@@ -65,10 +65,13 @@
                 @Html.DisplayNameFor(model => model.SurveyQuestionsNamND[0].DisplayStyle)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SurveyQuestionsNamND[0].ImageURL)
+                @Html.DisplayNameFor(model => model.SurveyQuestionsNamND[0].ImageURL) *@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.SurveyQuestionsNamND[0].SurveyNamND)
+            </th>
+            <th>
+                Actions
             </th>
             <th></th>
         </tr>
@@ -103,7 +106,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.HelpText)
             </td>
-            <td>
+            @* <td>
                 @Html.DisplayFor(modelItem => item.Section)
             </td>
             <td>
@@ -129,7 +132,7 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ImageURL)
-            </td>
+            </td> *@
             <td>
                 @Html.DisplayFor(modelItem => item.SurveyNamND.SurveyName)
             </td>
