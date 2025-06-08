@@ -23,9 +23,17 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/SurveyQuestionsNamNDs/Index">SurveyQuestion</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
                     </ul>
+                </div>
+                <div class="nav-item text-nowrap">
+                    Welcome
+                    <strong>@Context.Request.Cookies["UserName"].ToString()</strong>
+                    | <a href="/Account/Logout">Sign Out</a>
                 </div>
             </div>
         </nav>

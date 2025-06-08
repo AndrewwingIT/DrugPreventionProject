@@ -1,0 +1,42 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using DrugPrevention.Repositories.NamND.Models;
+
+namespace DrugPrevention.RazorWebApp.NamND.Pages.SurveyQuestionsNamNDs
+{
+    public class DetailsModel : PageModel
+    {
+        //private readonly DrugPrevention.Repositories.NamND.Models.SU25_PRN222_SE1709_G2_DrugPreventionSystemContext _context;
+
+        //public DetailsModel(DrugPrevention.Repositories.NamND.Models.SU25_PRN222_SE1709_G2_DrugPreventionSystemContext context)
+        //{
+        //    _context = context;
+        //}
+
+        public SurveyQuestionsNamND SurveyQuestionsNamND { get; set; } = default!;
+
+        //public async Task<IActionResult> OnGetAsync(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    var surveyquestionsnamnd = await _context.SurveyQuestionsNamNDs.FirstOrDefaultAsync(m => m.QuestionNamNDID == id);
+        //    if (surveyquestionsnamnd == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    else
+        //    {
+        //        SurveyQuestionsNamND = surveyquestionsnamnd;
+        //    }
+        //    return Page();
+        //}
+    }
+}

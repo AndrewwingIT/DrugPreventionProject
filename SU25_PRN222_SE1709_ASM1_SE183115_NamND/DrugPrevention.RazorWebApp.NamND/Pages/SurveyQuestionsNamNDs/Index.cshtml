@@ -1,0 +1,144 @@
+﻿@page
+@model DrugPrevention.RazorWebApp.NamND.Pages.SurveyQuestionsNamNDs.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SurveyQuestionsNamND[0].QuestionText)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SurveyQuestionsNamND[0].QuestionOrder)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SurveyQuestionsNamND[0].IsActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SurveyQuestionsNamND[0].CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SurveyQuestionsNamND[0].QuestionType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SurveyQuestionsNamND[0].IsRequired)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SurveyQuestionsNamND[0].Options)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SurveyQuestionsNamND[0].RiskWeight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SurveyQuestionsNamND[0].HelpText)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SurveyQuestionsNamND[0].Section)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SurveyQuestionsNamND[0].Tag)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SurveyQuestionsNamND[0].Language)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SurveyQuestionsNamND[0].DependsOnQuestionID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SurveyQuestionsNamND[0].DependsOnAnswer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SurveyQuestionsNamND[0].MinScore)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SurveyQuestionsNamND[0].MaxScore)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SurveyQuestionsNamND[0].DisplayStyle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SurveyQuestionsNamND[0].ImageURL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SurveyQuestionsNamND[0].SurveyNamND)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.SurveyQuestionsNamND) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuestionText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuestionOrder)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuestionType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsRequired)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Options)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RiskWeight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HelpText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Section)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tag)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Language)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DependsOnQuestionID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DependsOnAnswer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MinScore)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaxScore)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DisplayStyle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageURL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurveyNamND.SurveyName)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.QuestionNamNDID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.QuestionNamNDID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.QuestionNamNDID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

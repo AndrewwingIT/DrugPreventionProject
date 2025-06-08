@@ -1,0 +1,125 @@
+﻿@page
+@model DrugPrevention.RazorWebApp.NamND.Pages.SurveyQuestionsNamNDs.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>SurveyQuestionsNamND</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="SurveyQuestionsNamND.QuestionNamNDID" />
+            <div class="form-group">
+                <label asp-for="SurveyQuestionsNamND.SurveyNamNDID" class="control-label"></label>
+                <select asp-for="SurveyQuestionsNamND.SurveyNamNDID" class="form-control" asp-items="ViewBag.SurveyNamNDID"></select>
+                <span asp-validation-for="SurveyQuestionsNamND.SurveyNamNDID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SurveyQuestionsNamND.QuestionText" class="control-label"></label>
+                <input asp-for="SurveyQuestionsNamND.QuestionText" class="form-control" />
+                <span asp-validation-for="SurveyQuestionsNamND.QuestionText" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SurveyQuestionsNamND.QuestionOrder" class="control-label"></label>
+                <input asp-for="SurveyQuestionsNamND.QuestionOrder" class="form-control" />
+                <span asp-validation-for="SurveyQuestionsNamND.QuestionOrder" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="SurveyQuestionsNamND.IsActive" /> @Html.DisplayNameFor(model => model.SurveyQuestionsNamND.IsActive)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="SurveyQuestionsNamND.CreatedDate" class="control-label"></label>
+                <input asp-for="SurveyQuestionsNamND.CreatedDate" class="form-control" />
+                <span asp-validation-for="SurveyQuestionsNamND.CreatedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SurveyQuestionsNamND.QuestionType" class="control-label"></label>
+                <input asp-for="SurveyQuestionsNamND.QuestionType" class="form-control" />
+                <span asp-validation-for="SurveyQuestionsNamND.QuestionType" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="SurveyQuestionsNamND.IsRequired" /> @Html.DisplayNameFor(model => model.SurveyQuestionsNamND.IsRequired)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="SurveyQuestionsNamND.Options" class="control-label"></label>
+                <input asp-for="SurveyQuestionsNamND.Options" class="form-control" />
+                <span asp-validation-for="SurveyQuestionsNamND.Options" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SurveyQuestionsNamND.RiskWeight" class="control-label"></label>
+                <input asp-for="SurveyQuestionsNamND.RiskWeight" class="form-control" />
+                <span asp-validation-for="SurveyQuestionsNamND.RiskWeight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SurveyQuestionsNamND.HelpText" class="control-label"></label>
+                <input asp-for="SurveyQuestionsNamND.HelpText" class="form-control" />
+                <span asp-validation-for="SurveyQuestionsNamND.HelpText" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SurveyQuestionsNamND.Section" class="control-label"></label>
+                <input asp-for="SurveyQuestionsNamND.Section" class="form-control" />
+                <span asp-validation-for="SurveyQuestionsNamND.Section" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SurveyQuestionsNamND.Tag" class="control-label"></label>
+                <input asp-for="SurveyQuestionsNamND.Tag" class="form-control" />
+                <span asp-validation-for="SurveyQuestionsNamND.Tag" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SurveyQuestionsNamND.Language" class="control-label"></label>
+                <input asp-for="SurveyQuestionsNamND.Language" class="form-control" />
+                <span asp-validation-for="SurveyQuestionsNamND.Language" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SurveyQuestionsNamND.DependsOnQuestionID" class="control-label"></label>
+                <input asp-for="SurveyQuestionsNamND.DependsOnQuestionID" class="form-control" />
+                <span asp-validation-for="SurveyQuestionsNamND.DependsOnQuestionID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SurveyQuestionsNamND.DependsOnAnswer" class="control-label"></label>
+                <input asp-for="SurveyQuestionsNamND.DependsOnAnswer" class="form-control" />
+                <span asp-validation-for="SurveyQuestionsNamND.DependsOnAnswer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SurveyQuestionsNamND.MinScore" class="control-label"></label>
+                <input asp-for="SurveyQuestionsNamND.MinScore" class="form-control" />
+                <span asp-validation-for="SurveyQuestionsNamND.MinScore" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SurveyQuestionsNamND.MaxScore" class="control-label"></label>
+                <input asp-for="SurveyQuestionsNamND.MaxScore" class="form-control" />
+                <span asp-validation-for="SurveyQuestionsNamND.MaxScore" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SurveyQuestionsNamND.DisplayStyle" class="control-label"></label>
+                <input asp-for="SurveyQuestionsNamND.DisplayStyle" class="form-control" />
+                <span asp-validation-for="SurveyQuestionsNamND.DisplayStyle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SurveyQuestionsNamND.ImageURL" class="control-label"></label>
+                <input asp-for="SurveyQuestionsNamND.ImageURL" class="form-control" />
+                <span asp-validation-for="SurveyQuestionsNamND.ImageURL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
