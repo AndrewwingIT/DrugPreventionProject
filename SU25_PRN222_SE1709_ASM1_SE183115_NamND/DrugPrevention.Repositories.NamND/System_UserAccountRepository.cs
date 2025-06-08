@@ -14,12 +14,12 @@ namespace DrugPrevention.Repositories.NamND
         public System_UserAccountRepository() { }
         public System_UserAccountRepository(SU25_PRN222_SE1709_G2_DrugPreventionSystemContext context) => _context = context;
         
-        public async Task<System_UserAccount> GetUserAccount(string username, string password)
+        public async Task<System_UserAccount> GetUserAccount(string userName, string password)
         {
             //return await _context.SystemUserAccounts
             //    .FirstOrDefaultAsync(u => u.Email == userName && u.Password == password && u.IsActive == true);
             return await _context.System_UserAccounts
-                .FirstOrDefaultAsync(u => u.UserName== username 
+                .FirstOrDefaultAsync(u => u.UserName== userName 
                                     && u.Password == password
                                     && u.IsActive == true);
             //return await _context.SystemUserAccounts
