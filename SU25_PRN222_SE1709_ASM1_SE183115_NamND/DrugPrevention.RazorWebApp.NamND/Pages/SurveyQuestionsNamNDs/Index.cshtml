@@ -76,37 +76,38 @@
             <th></th>
         </tr>
     </thead>
-    <tbody>
-@foreach (var item in Model.SurveyQuestionsNamND) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.QuestionText)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.QuestionOrder)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsActive)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.QuestionType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsRequired)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Options)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RiskWeight)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HelpText)
-            </td>
-            @* <td>
+    <tbody id="SurveyQuestionTBodyId">
+        @foreach (var item in Model.SurveyQuestionsNamND)
+        {
+            <tr id="@item.QuestionNamNDID">
+                <td>
+                    @Html.DisplayFor(modelItem => item.QuestionText)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QuestionOrder)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsActive)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QuestionType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsRequired)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Options)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RiskWeight)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HelpText)
+                </td>
+                @* <td>
                 @Html.DisplayFor(modelItem => item.Section)
             </td>
             <td>
@@ -133,15 +134,69 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ImageURL)
             </td> *@
-            <td>
-                @Html.DisplayFor(modelItem => item.SurveyNamND.SurveyName)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.QuestionNamNDID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.QuestionNamNDID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.QuestionNamNDID">Delete</a>
-            </td>
-        </tr>
-}
+                <td>
+                    @Html.DisplayFor(modelItem => item.SurveyNamND.SurveyName)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.QuestionNamNDID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.QuestionNamNDID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.QuestionNamNDID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script>
+    "use strict";
+
+    var connection = new signalR.HubConnectionBuilder().withUrl("/DrugPreventionHub").build();
+
+    connection.start().then(function () {
+        console.log("Connected to the SignalR Hub");
+    }).catch(function (err) {
+        return console.error(err.toString());
+    });
+
+    connection.on("Receiver_DeleteSurveyQuestionsNamND", function (QuestionNamNDID) {
+        alert($(`#${QuestionNamNDID}`).value);
+        $('#SurveyQuestionTBodyId').find(`tr[id='${QuestionNamNDID}']`).remove();
+    });
+
+    // connection.on("Receiver_CreateSurveyQuestionsNamND", function (item) {
+    //     //alert('Receiver_CreateSurveyQuestionsNamND');
+    //     console.log(item);
+    //      var trSurveyQuestionsNamND = `
+    //       <tr id="${item.questionNamNDID}">
+    //          <td>${item.questionText}</td>
+    //          <td><span class="badge bg-info">${item.questionType}</span></td>
+    //          <td>${item.options}</td>
+    //          <td>
+    //              ${item.isRequired ? '<span class="badge bg-danger">Required</span>' : '<span class="badge bg-secondary">Optional</span>'}
+    //          </td>
+    //          <td>${item.questionOrder}</td>
+    //          <td>${item.riskWeight}</td>
+    //          <td>${item.section}</td>
+    //          <td>
+    //              ${item.isActive ? '<span class="badge bg-success">Active</span>' : '<span class="badge bg-warning">Inactive</span>'}
+    //          </td>
+    //          <td>${item.tag}</td>
+    //          <td>${item.language}</td>
+    //          <td>${item.survey.surveyName}</td>
+    //          <td>
+    //              <div class="btn-group">
+    //                  <a href="/SurveyQuestionsNamNDs/Edit?id=${item.questionNamNDID}" class="btn btn-sm btn-primary">Edit</a>
+    //                  <a href="/SurveyQuestionsNamNDs/Details?id=${item.questionNamNDID}" class="btn btn-sm btn-info">Details</a>
+    //                  <a href="/SurveyQuestionsNamNDs/Delete?id=${item.questionNamNDID}" class="btn btn-sm btn-danger">Delete</a>
+    //              </div>
+    //          </td>
+    //        </tr>
+    //       `;
+
+    //     alert(trSurveyQuestionsNamND);
+
+    //     $('#SurveyQuestionTBodyId').append(trSurveyQuestionsNamND);
+    // });
+
+</script>

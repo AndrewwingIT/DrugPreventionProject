@@ -131,6 +131,38 @@
     <form method="post">
         <input type="hidden" asp-for="SurveyQuestionsNamND.QuestionNamNDID" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
+        @* deleteSignalHub *@
+        <input type="button" id="btnHubDelete" value="Delete by SignalRHub" class="btn btn-primary" />
+        (Send ID => SingalRHub => send ID to all Clients => Delete) |
         <a asp-page="./Index">Back to List</a>
     </form>
 </div>
+
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script>
+    "use strict";
+
+    //// Get "zPaymentHub" from app.MapHub<zPaymentHub>("/zPaymentHub") at Program.cs;
+    var connection = new signalR.HubConnectionBuilder().withUrl("/DrugPreventionHub").build();
+
+    connection.start().then(function () {
+        console.log("Connected to the SignalR Hub");
+    }).catch(function (err) {
+        return console.error(err.toString());
+    });
+
+    document.getElementById("btnHubDelete").addEventListener("click", function (event) {
+
+        //alert("btnHubDelete");
+
+        var dataObj = document.getElementById("SurveyQuestionsNamND_QuestionNamNDID").value;
+        console.log(dataObj);
+
+        //// Calls method of SignalRHub server with primary key param (zPaymentHub.cs)
+        connection.invoke("HubDelete_SurveyQuestion", dataObj).catch(function (err) {
+            return console.error(err.toString());
+        });
+        event.preventDefault();
+    });
+
+</script>
