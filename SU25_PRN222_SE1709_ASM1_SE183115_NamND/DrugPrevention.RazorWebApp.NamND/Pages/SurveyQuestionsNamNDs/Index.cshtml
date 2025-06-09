@@ -163,40 +163,35 @@
         alert($(`#${QuestionNamNDID}`).value);
         $('#SurveyQuestionTBodyId').find(`tr[id='${QuestionNamNDID}']`).remove();
     });
+    
+    connection.on("Receiver_CreateSurveyQuestionsNamND", function (item){
+        //alert('Receiver_CreateSurveyQuestionsNamND');
+        console.log(item);
+        var trSurveyQuestionsNamND = `
+          <tr id="${item.questionNamNDID}">
+             <td>${item.questionText}</td>
+             <td>${item.questionOrder}</td>
+             <td>${item.isActive ? '<span class="badge bg-success">Active</span>' : '<span class="badge bg-warning">Inactive</span>'}</td>
+             <td>${item.createdDate}</td>
+             <td>${item.questionType}</td>
+             <td>${item.isRequired ? '<span class="badge bg-danger">Required</span>' : '<span class="badge bg-secondary">Optional</span>'}</td>
+             <td>${item.options}</td>
+             <td>${item.riskWeight}</td>
+             <td>${item.helpText}</td>
+             <td>${item.survey.surveyName}</td>
+             <td>
+                 <div class="btn-group">
+                     <a href="/SurveyQuestionsNamNDs/Edit?id=${item.questionNamNDID}" class="btn btn-sm btn-primary">Edit</a>
+                     <a href="/SurveyQuestionsNamNDs/Details?id=${item.questionNamNDID}" class="btn btn-sm btn-info">Details</a>
+                     <a href="/SurveyQuestionsNamNDs/Delete?id=${item.questionNamNDID}" class="btn btn-sm btn-danger">Delete</a>
+                 </div>
+             </td>
+           </tr>
+          `;
+          
+          alert(trSurveyQuestionsNamND);
 
-    // connection.on("Receiver_CreateSurveyQuestionsNamND", function (item) {
-    //     //alert('Receiver_CreateSurveyQuestionsNamND');
-    //     console.log(item);
-    //      var trSurveyQuestionsNamND = `
-    //       <tr id="${item.questionNamNDID}">
-    //          <td>${item.questionText}</td>
-    //          <td><span class="badge bg-info">${item.questionType}</span></td>
-    //          <td>${item.options}</td>
-    //          <td>
-    //              ${item.isRequired ? '<span class="badge bg-danger">Required</span>' : '<span class="badge bg-secondary">Optional</span>'}
-    //          </td>
-    //          <td>${item.questionOrder}</td>
-    //          <td>${item.riskWeight}</td>
-    //          <td>${item.section}</td>
-    //          <td>
-    //              ${item.isActive ? '<span class="badge bg-success">Active</span>' : '<span class="badge bg-warning">Inactive</span>'}
-    //          </td>
-    //          <td>${item.tag}</td>
-    //          <td>${item.language}</td>
-    //          <td>${item.survey.surveyName}</td>
-    //          <td>
-    //              <div class="btn-group">
-    //                  <a href="/SurveyQuestionsNamNDs/Edit?id=${item.questionNamNDID}" class="btn btn-sm btn-primary">Edit</a>
-    //                  <a href="/SurveyQuestionsNamNDs/Details?id=${item.questionNamNDID}" class="btn btn-sm btn-info">Details</a>
-    //                  <a href="/SurveyQuestionsNamNDs/Delete?id=${item.questionNamNDID}" class="btn btn-sm btn-danger">Delete</a>
-    //              </div>
-    //          </td>
-    //        </tr>
-    //       `;
-
-    //     alert(trSurveyQuestionsNamND);
-
-    //     $('#SurveyQuestionTBodyId').append(trSurveyQuestionsNamND);
-    // });
+          $('#SurveyQuestionTBodyId').append(trSurveyQuestionsNamND);
+          });
 
 </script>

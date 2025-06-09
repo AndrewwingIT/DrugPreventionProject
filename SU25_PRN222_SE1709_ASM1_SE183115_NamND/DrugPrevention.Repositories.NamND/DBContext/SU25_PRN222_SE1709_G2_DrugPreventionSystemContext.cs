@@ -44,6 +44,7 @@ public partial class SU25_PRN222_SE1709_G2_DrugPreventionSystemContext : DbConte
 
     public virtual DbSet<UsersTuyenTM> UsersTuyenTMs { get; set; }
 
+
     public static string GetConnectionString(string connectionStringName)
     {
         var config = new ConfigurationBuilder()
@@ -58,9 +59,9 @@ public partial class SU25_PRN222_SE1709_G2_DrugPreventionSystemContext : DbConte
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer(GetConnectionString("DefaultConnection")).UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
 
-    //    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-    //        => optionsBuilder.UseSqlServer("Data Source=DESKTOP-SVTDQQT\\ANDREW;Initial Catalog=SU25_PRN222_SE1709_G2_DrugPreventionSystem;Persist Security Info=True;User ID=sa;Password=12345;Encrypt=False");
+//    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+//        => optionsBuilder.UseSqlServer("Data Source=BAKKACHICHI\\ANDREW;Initial Catalog=SU25_PRN222_SE1709_G2_DrugPreventionSystem;Persist Security Info=True;User ID=sa;Password=12345;Encrypt=False");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
