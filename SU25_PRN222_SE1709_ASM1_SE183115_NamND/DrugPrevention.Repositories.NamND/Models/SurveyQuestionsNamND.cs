@@ -2,6 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace DrugPrevention.Repositories.NamND.Models;
 
@@ -9,42 +10,66 @@ public partial class SurveyQuestionsNamND
 {
     public int QuestionNamNDID { get; set; }
 
+    [Required]
+    [Display(Name = "Survey")]
     public int SurveyNamNDID { get; set; }
 
+    [Required]
+    [Display(Name = "Question Text")]
     public string QuestionText { get; set; }
 
+    [Required]
+    [RegularExpression(@"^\d+$", ErrorMessage = "Order must be a positive number.")]
+    [Display(Name = "Order")]
     public int QuestionOrder { get; set; }
 
+    [Display(Name = "Active")]
     public bool IsActive { get; set; }
 
+    [Display(Name = "Created Date")]
     public DateTime? CreatedDate { get; set; }
 
+    [Required]
+    [Display(Name = "Question Type")]
     public string QuestionType { get; set; }
 
+    [Display(Name = "Required")]
     public bool IsRequired { get; set; }
 
+    [Display(Name = "Options")]
     public string Options { get; set; }
 
+    [Display(Name = "Risk Weight")]
     public int? RiskWeight { get; set; }
 
+    [Display(Name = "Help Text")]
     public string HelpText { get; set; }
 
+    [Display(Name = "Section")]
     public string Section { get; set; }
 
+    [Display(Name = "Tag")]
     public string Tag { get; set; }
 
+    [Display(Name = "Language")]
     public string Language { get; set; }
 
+    [Display(Name = "Depends On Question ID")]
     public int? DependsOnQuestionID { get; set; }
 
+    [Display(Name = "Depends On Answer")]
     public string DependsOnAnswer { get; set; }
 
+    [Display(Name = "Min Score")]
     public int? MinScore { get; set; }
 
+    [Display(Name = "Max Score")]
     public int? MaxScore { get; set; }
 
+    [Display(Name = "Display Style")]
     public string DisplayStyle { get; set; }
 
+    [Display(Name = "Image URL")]
     public string ImageURL { get; set; }
 
     public virtual SurveysNamND SurveyNamND { get; set; }
