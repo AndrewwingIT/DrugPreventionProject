@@ -111,6 +111,7 @@
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="button" id="btnHubUpdate" value="Update by SignalRHub" class="btn btn-success" />
             </div>
         </form>
     </div>
@@ -119,6 +120,47 @@
 <div>
     <a asp-page="./Index">Back to List</a>
 </div>
+
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+
+<script>
+    "use strict";
+
+    var connection = new signalR.HubConnectionBuilder().withUrl("/DrugPreventionHub").build();
+
+    connection.start().then(function () {
+        console.log("Connected to the SignalR Hub");
+    }).catch(function (err) {
+        return console.error(err.toString());
+    });
+    document.getElementById("btnHubUpdate").addEventListener("click", function (event) {
+
+        var dataObj = JSON.stringify({
+            QuestionNamNDID: document.getElementById("SurveyQuestionsNamND_QuestionNamNDID").value,
+            SurveyNamNDID: document.getElementById("SurveyQuestionsNamND_SurveyNamNDID").value,
+            QuestionText: document.getElementById("SurveyQuestionsNamND_QuestionText").value,
+            QuestionOrder: document.getElementById("SurveyQuestionsNamND_QuestionOrder").value,
+            CreatedDate: document.getElementById("SurveyQuestionsNamND_CreatedDate").value,
+            QuestionType: document.getElementById("SurveyQuestionsNamND_QuestionType").value,
+            Options: document.getElementById("SurveyQuestionsNamND_Options").value,
+            HelpText: document.getElementById("SurveyQuestionsNamND_HelpText").value,
+            Section: document.getElementById("SurveyQuestionsNamND_Section").value,
+            Tag: document.getElementById("SurveyQuestionsNamND_Tag").value,
+            DependsOnQuestionID: document.getElementById("SurveyQuestionsNamND_DependsOnQuestionID").value,
+            DependsOnAnswer: document.getElementById("SurveyQuestionsNamND_DependsOnAnswer").value,
+            MinScore: document.getElementById("SurveyQuestionsNamND_MinScore").value,
+            MaxScore: document.getElementById("SurveyQuestionsNamND_MaxScore").value,
+            DisplayStyle: document.getElementById("SurveyQuestionsNamND_DisplayStyle").value,
+            ImageURL: document.getElementById("SurveyQuestionsNamND_ImageURL").value
+        });
+        console.log(dataObj);
+
+        connection.invoke("HubUpdate_SurveyQuestion", dataObj).catch(function (err) {
+            return console.error(err.toString());
+        });
+        event.preventDefault();
+    });
+</script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
