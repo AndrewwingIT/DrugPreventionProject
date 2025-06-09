@@ -10,7 +10,7 @@
 <div>
     <h4>SurveyQuestionsNamND</h4>
     <hr />
-    <dl class="row">
+    <dl class="row" id="surveyQuestionsNamNDId">
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.SurveyQuestionsNamND.QuestionText)
         </dt>
@@ -131,3 +131,48 @@
     <a asp-page="./Edit" asp-route-id="@Model.SurveyQuestionsNamND.QuestionNamNDID">Edit</a> |
     <a asp-page="./Index">Back to List</a>
 </div>
+
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script>
+    "use strict";
+
+    var connection = new signalR.HubConnectionBuilder().withUrl("/DrugPreventionHub").build();
+
+    connection.start().then(function () {
+        console.log("Connected to the SignalR Hub");
+    }).catch(function (err) {
+        return console.error(err.toString());
+    });
+
+    connection.on("Receiver_DeleteSurveyQuestionsNamND", function (QuestionNamNDID) {
+        alert($(`#${QuestionNamNDID}`).value);
+        // $('#SurveyQuestionTBodyId').find(`tr[id='${QuestionNamNDID}']`).remove();
+        document.getElementById("surveyQuestionsNamNDId").innerHTML = "This item had deleted";
+    });
+
+    connection.on("Receiver_UpdateSurveyQuestionsNamND", function (item) {
+        //alert(item.code)
+        console.log(item);
+        // Update the UI with the received item data
+        // For example, you can update the text of an element with the new data
+        document.getElementById("SurveyQuestionsNamND_QuestionText").innerHTML = item.questionText;
+        document.getElementById("SurveyQuestionsNamND_QuestionOrder").innerHTML = item.questionOrder;
+        document.getElementById("SurveyQuestionsNamND_IsActive").innerHTML = item.isActive ? "Active" : "Inactive";
+        document.getElementById("SurveyQuestionsNamND_CreatedDate").innerHTML = item.createdDate;
+        document.getElementById("SurveyQuestionsNamND_QuestionType").innerHTML = item.questionType;
+        document.getElementById("SurveyQuestionsNamND_IsRequired").innerHTML = item.isRequired ? "Required" : "Optional";
+        document.getElementById("SurveyQuestionsNamND_Options").innerHTML = item.options;
+        document.getElementById("SurveyQuestionsNamND_RiskWeight").innerHTML = item.riskWeight;
+        document.getElementById("SurveyQuestionsNamND_HelpText").innerHTML = item.helpText;
+        document.getElementById("SurveyQuestionsNamND_Section").innerHTML = item.section;
+        document.getElementById("SurveyQuestionsNamND_Tag").innerHTML = item.tag;
+        document.getElementById("SurveyQuestionsNamND_Language").innerHTML = item.language;
+        document.getElementById("SurveyQuestionsNamND_DependsOnQuestionID").innerHTML = item.dependsOnQuestionID;
+        document.getElementById("SurveyQuestionsNamND_DependsOnAnswer").innerHTML = item.dependsOnAnswer;
+        document.getElementById("SurveyQuestionsNamND_MinScore").innerHTML = item.minScore;
+        document.getElementById("SurveyQuestionsNamND_MaxScore").innerHTML = item.maxScore;
+        document.getElementById("SurveyQuestionsNamND_DisplayStyle").innerHTML = item.displayStyle;
+        document.getElementById("SurveyQuestionsNamND_ImageURL").innerHTML = item.imageURL;
+    });
+
+</script>
